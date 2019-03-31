@@ -1,0 +1,78 @@
+html{
+	background-color:#dddddd;
+}
+html, body{
+	overflow-x:hidden;
+}
+#logoandmotto{
+	text-align:center;
+/*	background-image:url("./images/fesh.png");
+	background-position:center;
+	background-repeat:no-repeat;
+*/
+}
+#logo img{
+	width:200px;
+	display:inline;
+}
+#motto{
+	margin:0;
+	margin-bottom:10px;
+	padding:0;
+	display:block;
+}
+
+@media screen and (max-width: 600px){ /*i'm pretty sure that this doesn't work*/
+	#navbar ul, #navbar li, #navbar a {float:none;}
+}
+#navbar ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	width:100%;
+	float:left;
+	position: -webkit-sticky; /*Safari*/
+	position:sticky;
+	top:0;
+	background-color:#aaaaaa;
+}
+#navbar li{
+	float:left;
+}
+#navbar a{
+	min-width:80px;
+	display:block;
+	padding:8px;
+	color:white;
+	text-decoration:none;
+}
+#navbar a:hover{
+	background-color: #111;
+}
+.active{
+	background-color:#222;
+}
+li.dropdown{
+	display:inline-block;
+}
+.dropdown-content{
+	display:none;
+	position:aboslute;
+	background-color:#999999;
+	/*min-width:100px;*/
+	box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index:1;
+}
+.dropdown-content a{
+	color:black;
+	padding:12px 16px;
+	text-decoration:none;
+	display:block;
+	text-align:left;
+}
+.dropdown-content a:hover{
+	background-color:#CCCCCC;
+}
+.dropdown:hover .dropdown-content{
+	display:block;
+}
