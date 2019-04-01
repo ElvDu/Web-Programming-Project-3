@@ -54,20 +54,20 @@
 			<li><a href="index.html">Home</a></li>
 			<li><a class="current-page" href="purchase.php">Purchase</a>
 				<ul>
-					<li><a href="">Fish</a></li>
+					<li><a href="fish.php">Fish</a></li>
 					<li><a href="">Food</a></li>
 					<li><a href="">Homes</a></li>
 					<li><a href="">Accessories</a></li>
 				</ul>
 			</li>
-			<li><a href="cart.php">Cart</a></li>
+			<li><a href="checkout.php">Cart</a></li>
 		</ul>
 	</nav>
 	
 	<div id="categories">
 		<h2>Please choose from our four categories of products, or select from all items.</h2>
 		<ul>
-			<li><a href="">Fish</a></li>
+			<li><a href="fish.php">Fish</a></li>
 			<li><a href="">Food</a></li>
 			<li><a href="">Homes</a></li>
 			<li><a href="">Accessories</a></li>
@@ -83,6 +83,7 @@
 		<div class="product-image"><img src="<?php echo $row['image_url']; ?>"></div>
 		<div class="product-tile-footer">
 			<div class="product-title"><?php echo $row['PRODUCT_NAME']; ?></div>
+			<div class="product-description"><?php echo '"'.$row['DESCRIPTION'].'"'; ?></div>
 			<div class="product-price"><?php echo "$".$row['COST']; ?></div>
 			<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
 		</div>

@@ -16,6 +16,10 @@ html, body{
 	margin-bottom:10px;
 	padding:0;
 	display:block;
+	font-family:"Courier New";
+}
+#motto h1{
+	font-family:"Georgia";
 }
 #login{
 	float:right;
@@ -81,9 +85,29 @@ html, body{
 	background-color:#222;
 }
 
-
-body #categories{
+#welcome, #aboutus, #fotd{
 	text-align:center;
+}
+
+#fotd h1{
+	font-family:"Impact";
+	font-size:70px;
+}
+#fotd h2{
+	font-family:"Verdana";
+	font-size:40px;
+}
+#fotd h3{
+	font-style:italic;
+}
+
+#categories{
+	text-align:center;
+}
+#categories ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
 }
 
 .product{
@@ -93,6 +117,10 @@ body #categories{
 }
 
 .product .product-image img{
+	width:200px;
+}
+.product .product-description{
+	font-style:italic;
 	width:200px;
 }
 	
