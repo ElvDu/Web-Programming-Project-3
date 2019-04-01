@@ -6,10 +6,6 @@ html, body{
 }
 #logoandmotto{
 	text-align:center;
-/*	background-image:url("./images/fesh.png");
-	background-position:center;
-	background-repeat:no-repeat;
-*/
 }
 #logo img{
 	width:200px;
@@ -86,7 +82,17 @@ html, body{
 }
 
 
-body{
+body #categories{
 	text-align:center;
+}
+
+.product{
+	float:left;
+	margin:0px;
+	padding:10px;
+}
+
+.product .product-image img{
+	width:200px;
 }
 	
