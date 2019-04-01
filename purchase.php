@@ -1,14 +1,13 @@
-<!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" type="text/css" href="index.css">
-<title>Store of FISH</title>
+<title>Product of FISH</title>
 <head>
 	<div id="logoandmotto">
 		<div id="logo">
 			<img src="./images/fesh.png">
 		</div>
 		<div id="motto">
-			<h1>This is Store of FISH</h1>
+			<h1>This is Product of FISH</h1>
 			F I S H
 		</div>
 	</div>
@@ -20,8 +19,8 @@
 <body>
 	<nav id="navbar">
 		<ul>
-			<li><a class="current-page" href="index.html">Home</a></li>
-			<li><a href="purchase.html">Purchase</a>
+			<li><a href="index.html">Home</a></li>
+			<li><a class="current-page" href="purchase.html">Purchase</a>
 				<ul>
 					<li><a href="">Fish</a></li>
 					<li><a href="">Food</a></li>
@@ -29,17 +28,8 @@
 					<li><a href="">Decorations</a></li>
 				</ul>
 			</li>
-			<li><a id="cart" href="cart.html">Cart</a></li>
+			<li><a href="contactus.html">Contact Us</a></li>
 		</ul>
 	</nav>
-	Hello
-	<p>
-		Fish store
-	</p>
-	<h1>FISH OF THE DAY</h1>
-	<div id="fotd">
-		"Catfish"
-	</div>
-	????
 </body>
 </html>
