@@ -1,6 +1,15 @@
 <html>
 <link rel="stylesheet" type="text/css" href="index.css">
 <?php
+	require "config.php";
+	
+	$sample = mysqli_query($link, "SELECT * FROM users WHERE id = 1");
+	
+	while($row = $sample->fetch_assoc()){
+		echo $row['email']."<br>";
+	}
+?>
+<?php
 	if(isset($_POST['submit'])){
 		foreach($_POST['quantity'] as $key => $val){
 			if($val==0){
@@ -32,7 +41,7 @@
 	<nav id="navbar">
 		<ul>
 			<li><a href="index.html">Home</a></li>
-			<li><a href="purchase.html">Purchase</a>
+			<li><a href="purchase.php">Purchase</a>
 				<ul>
 					<li><a href="">Fish</a></li>
 					<li><a href="">Food</a></li>
@@ -40,7 +49,7 @@
 					<li><a href="">Accessories</a></li>
 				</ul>
 			</li>
-			<li><a class="current-page" href="cart.html">Cart</a></li>
+			<li><a class="current-page" href="cart.php">Cart</a></li>
 		</ul>
 	</nav>
 	
