@@ -1,8 +1,10 @@
 <?php
   session_start();
-
+  $error="";
   $total = number_format($_SESSION['total_price'], 2);
-
+  if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -127,14 +129,15 @@ hr {
   <p>HELLLLLOOOO THIS IS WHERE EMAIL SHOULD GOOO</p>
 </div>
 
-<h2 style="text-align: center;">Fish Market Checkout Form</h2>
+<h2 style="text-align: center;">Fish Market Payment Form</h2>
 
 <input type="submit" onclick="window.location.href = 'index.html';" value="Back to Home" class="btn-small">
 <div class="row">
   <div class="col-75">
     Total Payment Due: $<?php echo $total; ?>
     <div class="container">
-      <form action="/action_page.php">
+      <p style="text-align:center;color:red"><?php echo $error; ?></p>
+      <form action="finalAction.php" method="post">
       
         <div class="row">
 
