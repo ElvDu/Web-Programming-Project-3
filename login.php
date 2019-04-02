@@ -18,7 +18,7 @@
 	$result = mysqli_query($link,"SELECT email='$string' FROM users;");
 	
 	//if account exists get the password otherwise redirect to error page
-	if($result->num_rows == 0)
+	if(mysqli_num_rows($result)==0)
     {
     	$_SESSION["msg"] = "<h4>ACCOUNT DOES NOT EXIST!</h4>";
 		header("Location: ./loginerror.php");
@@ -31,8 +31,6 @@
     	$data = mysqli_fetch_assoc($result);
     	$password = $data['password'];
     }
-
-    echo "password";	
 
    	//this will check if the entered password matches
 	if($_POST["pwd1"] == $password)
