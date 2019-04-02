@@ -51,6 +51,7 @@ switch($_GET["action"]) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="style.css">
+
 <style>
 body {
   font-family: -apple-system, BlinkMacSystemFont;
@@ -227,6 +228,7 @@ if(isset($_SESSION["cart_item"])){
 <?php 
 }
 ?>
+  <input type="submit" onclick="window.location.href = 'checkout.php';" value="Continue to checkout" class="btn">
 </div>
 
 </body>
