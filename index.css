@@ -5,7 +5,13 @@ html, body{
 	overflow-x:hidden;
 }
 #logoandmotto{
-	text-align:center;
+	float:left;
+	position:sticky;
+	top:0;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:auto;
 }
 #logo img{
 	width:200px;
@@ -36,8 +42,7 @@ html, body{
 	margin:0;
 	padding:0;
 	display:inline-block;
-	width:100%;
-	position: -webkit-sticky; /*Safari*/
+	top:0px;
 	position:sticky;
 	background-color:#aaaaaa;
 }
@@ -104,10 +109,26 @@ html, body{
 #categories{
 	text-align:center;
 }
+#categories h2{
+	font-family:"Arial";
+	font-style:Italic;
+	font-size:20px;
+}
 #categories ul{
 	list-style-type:none;
 	margin:0;
 	padding:0;
+	font-size:20px;
+}
+
+#categories ul a{
+	text-decoration:none;
+	color:black;
+	font-family:"Verdana";
+}
+
+#categories ul a:hover{
+	font-weight:Bold;
 }
 
 .product{

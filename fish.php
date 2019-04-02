@@ -96,18 +96,18 @@ switch($_GET["action"]) {
 	</nav>
 	
 	<div id="categories">
-		<h2>Please choose from our four categories of products, or select from all items.</h2>
+		<h2>Please choose from fish, or select from all items.</h2>
 		<ul>
-			<li><a href="fish.php">Fish</a></li>
 			<li><a href="food.php">Food</a></li>
 			<li><a href="homes.php">Homes</a></li>
 			<li><a href="accessories.php">Accessories</a></li>
+			<li><a href="purchase.php">All</a></li>
 		</ul>
 	</div>
 	
 	<div id="product-grid">
 	<?php
-	$product_array = $db_handle->runQuery("SELECT * FROM product ORDER BY id ASC");
+	$product_array = $db_handle->runQuery("SELECT * FROM product WHERE CATEGORY='fish'");
 	if (!empty($product_array)) { 
 		foreach($product_array as $key=>$value){
 	?>
