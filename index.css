@@ -4,6 +4,18 @@ html{
 html, body{
 	overflow-x:hidden;
 }
+
+.button {
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: black;
+  padding: 2px 6px 2px 6px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: thin;
+}
+
 #logoandmotto{
 	float:left;
 	position:sticky;
