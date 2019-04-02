@@ -14,22 +14,33 @@
 	}
 
 
-	//queries db for email
-	$result = mysqli_query($link,"SELECT email='$string' FROM users;");
-	
-	//if account exists get the password otherwise redirect to error page
-	if(mysqli_num_rows($result)==0)
+	//gets all emails from db
+	$result = mysqli_query($link,"SELECT email FROM users;");
+	$list = Array();
+
+	$bool = false;
+	//checks if user entered email is already registered or not
+	while ($row = mysqli_fetch_assoc($result))
     {
-    	$_SESSION["msg"] = "<h4>ACCOUNT DOES NOT EXIST!</h4>";
+    	$list[] = $row['email'];
+    	
+    	if($row['email'] == $_POST["emailadd"])
+    	{
+    		$bool = true;
+    		$pass = mysqli_query($link, "SELECT password FROM users WHERE email='$string';");
+    		while ($rows = mysqli_fetch_assoc($pass))
+			{	
+			   	$password = $rows['password'];
+			}
+    		break;
+    	}
+    }
+
+    if($bool == false)
+    {
+		$_SESSION["msg"] = "<h4>EMAIL IS NOT REGISTERED!</h4>";	
 		header("Location: ./loginerror.php");
 		exit();
-    }
-    else
-    {	
-    	$sql = "SELECT password FROM users WHERE email='$string';";
-    	$result = mysqli_query($link, $sql);
-    	$data = mysqli_fetch_assoc($result);
-    	$password = $data['password'];
     }
 
    	//this will check if the entered password matches

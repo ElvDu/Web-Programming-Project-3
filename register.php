@@ -14,7 +14,7 @@
 
 
 	//gets all emails from db
-	$result = mysqli_query($link,"SELECT email FROM users");
+	$result = mysqli_query($link,"SELECT email FROM users;");
 	$list = Array();
 
 	//checks if user entered email is already registered or not
