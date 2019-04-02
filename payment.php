@@ -126,8 +126,10 @@ hr {
 </head>
 <body>
 <div class="userInfo">
+  <?php
     echo "<a href='logout.php' id='login' class='button'>Logout</a>";
-    echo("<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>"); 
+    echo "<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>";
+    ?> 
 </div>
 
 <h2 style="text-align: center;">Fish Market Payment Form</h2>
