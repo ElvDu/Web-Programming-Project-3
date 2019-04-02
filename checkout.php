@@ -50,7 +50,7 @@ switch($_GET["action"]) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="index.css">
 
 <style>
 body {
@@ -178,7 +178,6 @@ span.price {
 <h2 style="text-align: center;">Fish Market Checkout Form</h2>
 
 <div id="shopping-cart">
-<div class="txt-heading">Shopping Cart</div>
 
 <a id="btnEmpty" href="checkout.php?action=empty">Empty Cart</a>
 <?php
@@ -210,6 +209,9 @@ if(isset($_SESSION["cart_item"])){
 				<?php
 				$total_quantity += $item["quantity"];
 				$total_price += ($item["price"]*$item["quantity"]);
+
+        //Carry total to payments page
+        $_SESSION['total_price'] = $total_price;
 		}
 		?>
 
@@ -228,7 +230,9 @@ if(isset($_SESSION["cart_item"])){
 <?php 
 }
 ?>
-  <input type="submit" onclick="window.location.href = 'checkout.php';" value="Continue to checkout" class="btn">
+  <input type="submit" onclick="window.location.href = 'index.html';" value="Back to Home" class="btn">
+
+  <input type="submit" onclick="window.location.href = 'payment.php';" value="Continue to checkout" class="btn">
 </div>
 
 </body>

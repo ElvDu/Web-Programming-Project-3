@@ -48,7 +48,7 @@ switch($_GET["action"]) {
 <HTML>
 <HEAD>
 <TITLE>Simple PHP Shopping Cart</TITLE>
-<link href="style.css" type="text/css" rel="stylesheet" />
+<link href="index.css" type="text/css" rel="stylesheet" />
 </HEAD>
 <BODY>
 <div id="shopping-cart">
@@ -84,6 +84,9 @@ if(isset($_SESSION["cart_item"])){
 				<?php
 				$total_quantity += $item["quantity"];
 				$total_price += ($item["price"]*$item["quantity"]);
+
+				//Carry total to payments page
+				$_SESSION['total_price'] = $total_price;
 		}
 		?>
 

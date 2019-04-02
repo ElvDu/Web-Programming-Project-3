@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  $total = $_SESSION['total_price'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,6 +97,17 @@ label {
   font-size: 17px;
 }
 
+.btn-small {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #0000ff;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+}
+
 .btn:hover {
   background-color: #45a049;
 }
@@ -111,8 +129,10 @@ hr {
 
 <h2 style="text-align: center;">Fish Market Checkout Form</h2>
 
+<input type="submit" onclick="window.location.href = 'index.html';" value="Back to Home" class="btn-small">
 <div class="row">
   <div class="col-75">
+    Total Payment Due: $<?php echo $total; ?>
     <div class="container">
       <form action="/action_page.php">
       
@@ -169,10 +189,7 @@ hr {
               </div>
             </div>
 
-          <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-          </label>
-          <input type="submit" value="Continue to checkout" class="btn">
+          <input type="submit" value="Submit Payment" class="btn">
 
           </div>
 
