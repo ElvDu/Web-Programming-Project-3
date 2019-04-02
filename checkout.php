@@ -90,7 +90,7 @@ input[type=text] {
 </head>
 <body>
 <div class="userInfo">
-  <h3><? php echo $_SESSION['username'];?></h3>
+  <h4><?php echo("Logged in as: {$_SESSION['username']}");?></h4>
 </div>
 
 <h2 style="text-align: center;">Fish Market Checkout Form</h2>
