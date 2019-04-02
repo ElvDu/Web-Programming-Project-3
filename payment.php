@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  $total = $_SESSION['total_price'];
+  $total = number_format($_SESSION['total_price'], 2);
 
 ?>
 

@@ -150,6 +150,19 @@ html, body{
 	overflow: auto;
 }
 
+#coupon {
+	float: left;
+}
+
+#couponBtn {
+	position:relative;
+	border:none;
+	 padding: 10px 5px;
+	 display: inline-block;
+	 font-size: 14px;
+	 letter-spacing: 0.3px;
+}
+
 #btnEmpty {
 	background-color: #ffffff;
 	border: #d00000 1px solid;
