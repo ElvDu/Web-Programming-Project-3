@@ -126,12 +126,13 @@ hr {
 </head>
 <body>
 <div class="userInfo">
-  <p>HELLLLLOOOO THIS IS WHERE EMAIL SHOULD GOOO</p>
+    echo "<a href='logout.php' id='login' class='button'>Logout</a>";
+    echo("<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>"); 
 </div>
 
 <h2 style="text-align: center;">Fish Market Payment Form</h2>
 
-<input type="submit" onclick="window.location.href = 'index.html';" value="Back to Home" class="btn-small">
+<input type="submit" onclick="window.location.href = 'index.php';" value="Back to Home" class="btn-small">
 <div class="row">
   <div class="col-75">
     Total Payment Due: $<?php echo $total; ?>

@@ -71,7 +71,7 @@ if(isset($_SESSION['error'])) {
 	echo "Thank you " .$firstname. ", <br> Your fish are purchased and on their way to " .$city. ", " .$state. ". <br> Redirecting you to the home page in 3 seconds.";
 	?>
 	<script type="text/javascript">setTimeout(function(){
-		  window.location = "index.html";
+		  window.location = "index.php";
 		}, 3000);</script>
 <?php
 }

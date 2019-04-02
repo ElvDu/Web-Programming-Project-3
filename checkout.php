@@ -90,7 +90,17 @@ input[type=text] {
 </head>
 <body>
 <div class="userInfo">
-  <h4><?php echo("Logged in as: {$_SESSION['username']}");?></h4>
+  <?php 
+    if(isset($_SESSION["loggedin"]))
+    { 
+      echo "<a href='logout.php' id='login' class='button'>Logout</a>";
+      echo("<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>");
+    }
+    else
+    { 
+      echo "<a href='login.html' id='login' class='button'>Login</a> <a href='signup.html' id='login' class='button'>Sign Up</a>";
+    }
+  ?>
 </div>
 
 <h2 style="text-align: center;">Fish Market Checkout Form</h2>

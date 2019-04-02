@@ -69,8 +69,17 @@ switch($_GET["action"]) {
 		</div>
 	</div>
 	<div id="login">
-		<a href="signup.html">sign up</a>
-		<a href="login.html">login</a>
+		<?php 
+    	if(isset($_SESSION["loggedin"]))
+    	{ 
+      		echo "<a href='logout.php' id='login' class='button'>Logout</a>";
+      		echo("<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>");
+    	}
+    	else
+   		{ 
+      		echo "<a href='login.html' id='login' class='button'>Login</a> <a href='signup.html' id='login' class='button'>Sign Up</a>";
+    	}
+  ?>
 	</div>
 	
 	<nav id="navbar">

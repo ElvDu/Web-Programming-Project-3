@@ -46,7 +46,8 @@
    	//this will check if the entered password matches
 	if($_POST["pwd1"] == $password)
 	{
-		header("Location: ./index.html");
+		$_SESSION["loggedin"] = "true";
+		header("Location: ./index.php");
 		exit();
 		
 	}

@@ -41,7 +41,8 @@
 	{
 		$sql = "INSERT INTO users (email, password) VALUES ('".$_POST["emailadd"]."','".$_POST["pwd1"]."')";
 		mysqli_query($link, $sql);
-		header("Location: ./index.html");
+		$_SESSION["loggedin"] = "true";
+		header("Location: ./index.php");
 		exit();
 	}
 	mysqli_close($link);

@@ -18,21 +18,21 @@
 
 
 	<?php 
-		if(isset($_SESSION["loggedin"]))
-		{ 
-			echo "<a href='logout.php' id='login' class='button'>Logout</a>";
-			echo("<div id='login'>Logged in as: {$_SESSION['username']}</div>");
-		}
-		else
-		{ 
-			echo "<a href='login.html' id='login' class='button'>Login</a> <a href='signup.html' id='login' class='button'>Sign Up</a>";
-		}
-	?>
+    if(isset($_SESSION["loggedin"]))
+    { 
+      echo "<a href='logout.php' id='login' class='button'>Logout</a>";
+      echo("<div id='login' style = 'color:red;'>Logged in as: {$_SESSION['username']}</div>");
+    }
+    else
+    { 
+      echo "<a href='login.html' id='login' class='button'>Login</a> <a href='signup.html' id='login' class='button'>Sign Up</a>";
+    }
+  ?>
 	
 	
 	<nav id="navbar">
 		<ul>
-			<li><a class="current-page" href="index.html">Home</a></li>
+			<li><a class="current-page" href="index.php">Home</a></li>
 			<li><a href="purchase.php">Purchase</a>
 				<ul>
 					<li><a href="fish.php">Fish</a></li>
