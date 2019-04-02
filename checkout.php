@@ -1,8 +1,57 @@
 <!DOCTYPE html>
+<?php
+session_start();
+require_once("dbcontroller.php");
+$db_handle = new DBController();
+if(!empty($_GET["action"])) {
+switch($_GET["action"]) {
+	case "add":
+		if(!empty($_POST["quantity"])) {
+			$productByID = $db_handle->runQuery("SELECT * FROM product WHERE id='" . $_GET["id"] . "'");
+
+			$itemArray = array($productByID[0]["id"]=>array('name'=>$productByID[0]["PRODUCT_NAME"], 'id'=>$productByID[0]["id"], 'quantity'=>$_POST["quantity"], 'price'=>$productByID[0]["COST"], 'image'=>$productByID[0]["image_url"]));
+			
+			if(!empty($_SESSION["cart_item"])) {
+				
+				if(in_array($productByID[0]["id"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByID[0]["id"] == $k) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($_GET["id"] == $k)
+						unset($_SESSION["cart_item"][$k]);				
+					if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
+}
+?>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+
 <style>
 body {
   font-family: -apple-system, BlinkMacSystemFont;
@@ -128,40 +177,58 @@ span.price {
 
 <h2 style="text-align: center;">Fish Market Checkout Form</h2>
 
+<div id="shopping-cart">
+<div class="txt-heading">Shopping Cart</div>
 
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/checkout.php">
-      
-        <div class="row">
+<a id="btnEmpty" href="checkout.php?action=empty">Empty Cart</a>
+<?php
+if(isset($_SESSION["cart_item"])){
+    $total_quantity = 0;
+    $total_price = 0;
+?>	
+<table class="tbl-cart" cellpadding="10" cellspacing="1">
+<tbody>
+<tr>
+<th style="text-align:left;">Name</th>
+<th style="text-align:right;" width="5%">Quantity</th>
+<th style="text-align:right;" width="10%">Unit Price</th>
+<th style="text-align:right;" width="10%">Price</th>
+<th style="text-align:center;" width="5%">Remove</th>
+</tr>	
+<?php		
+    foreach ($_SESSION["cart_item"] as $item){
+        $item_price = $item["quantity"]*$item["price"];
+		?>
+				<tr>
+				<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+				<td><?php echo $item["id"]; ?></td>
+				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td style="text-align:center;"><a href="checkout.php?action=remove&id=<?php echo $item["id"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+				</tr>
+				<?php
+				$total_quantity += $item["quantity"];
+				$total_price += ($item["price"]*$item["quantity"]);
+		}
+		?>
 
-          
-
-          <div class="col-50">
-            <div class="container">
-              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-              <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-              <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-              <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-              <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-              <hr>
-              <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-            </div>
-          </div>
-
-          <div class="col-25">
-            <p>This could have the pictures of the items as a preview...</p>
-          </div>
-          
-      </div>
-
-      </form>
-    </div>
-  </div>
-
+<tr>
+<td colspan="2" align="right">Total:</td>
+<td align="right"><?php echo $total_quantity; ?></td>
+<td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>		
+  <?php
+} else {
+?>
+<div class="no-records">Your Cart is Empty</div>
+<?php 
+}
+?>
   <input type="submit" onclick="window.location.href = 'checkout.php';" value="Continue to checkout" class="btn">
-
 </div>
 
 </body>
